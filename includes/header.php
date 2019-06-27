@@ -20,7 +20,7 @@
 						}
 					?>
 					<a class="dropdown-item" href="<?php echo URL; ?>/articles/my">List My</a>
-					<a class="dropdown-item disabled" href="#">New Article</a>
+					<a class="dropdown-item" href="<?php echo URL; ?>/articles/insert">New Article</a>
 					<div class="dropdown-divider"></div>
 					<a class="dropdown-item" href="api/read/articles">Get API</a>
 				</div>

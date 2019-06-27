@@ -56,7 +56,7 @@
 												<td>'. $Users_Data['username'] .'</td>
 												<td>'. $Users_Data['firstname'] .'</td>
 												<td>'. $Users_Data['lastname'] .'</td>
-												<td><a href="">UPDATE</a> <a href="">REMOVE</a></td>
+												<td><button class="btn btn-primary">UPDATE</button> <button class="btn btn-danger">REMOVE</button></td>
 											</tr>';
 									}
 					echo '
