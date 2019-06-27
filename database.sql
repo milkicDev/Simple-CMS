@@ -56,7 +56,7 @@ CREATE TABLE `users` (
 
 INSERT INTO `users` (`ID`, `username`, `password`, `firstname`, `lastname`, `email`, `role`, `nickname`, `avatar`, `registred_at`) VALUES
 (1, 'MR. Programer', '136470db2fe671c7e432c17fe04e4dd5', 'Nikola', 'Milkić', 'nikola@milkic.dev', 2, 'MR. Programer', 'milkic.png', '2019-06-25 18:25:54'),
-(2, 'admin', '21232f297a57a5a743894a0e4a801fc3', 'Admin', 'Admin', 'admin@localhost', 1, 'Admin', NULL, '2019-06-25 19:55:50');
+(2, 'admin', '21232f297a57a5a743894a0e4a801fc3', 'Admin', 'Admin', 'admin@localhost', 2, 'Admin', NULL, '2019-06-25 19:55:50');
 
 --
 -- Indexes for dumped tables
