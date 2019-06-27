@@ -83,7 +83,6 @@
 						<tr>
 							<td scope="col">ID</td>
 							<td scope="col">Title</td>
-							<td scope="col">Body</td>
 							<td scope="col">Author</td>
 							<td scope="col">Action</td>
 						</tr>
@@ -97,13 +96,21 @@
 										</tr>';
 								} else {
 									echo '
-										<tr>
-											<td scope="row">'. $Artices_data->{$key}->ID .'</td>
-											<td>'. $Artices_data->{$key}->title .'</td>
-											<td>'. $Artices_data->{$key}->body .'</td>
-											<td>'. $Artices_data->{$key}->author .'</td>
-											<td><a class="btn btn-primary" href="'. URL .'/articles/update/'. $Artices_data->{$key}->ID .'">UPDATE</a> <a class="btn btn-danger" href="" onclick="remove('. $Artices_data->{$key}->ID .')">REMOVE</a></td>
-										</tr>';
+									<tr>
+										<td scope="row">
+											<a href="'. URL .'/article/'. $Artices_data->{$key}->ID .'">'. $Artices_data->{$key}->ID .'</a>
+										</td>
+										<td>
+											<a href="'. URL .'/article/'. $Artices_data->{$key}->ID .'">'. $Artices_data->{$key}->title .'</a>
+										</td>
+										<td>
+											<a href="'. URL .'/article/'. $Artices_data->{$key}->ID .'">'. $Artices_data->{$key}->author .'</a>
+										</td>
+										<td>
+											<a class="btn btn-primary" href="'. URL .'/articles/update/'. $Artices_data->{$key}->ID .'">UPDATE</a> 
+											<a class="btn btn-danger" href="" onclick="remove('. $Artices_data->{$key}->ID .')">REMOVE</a>
+										</td>
+									</tr>';
 								}
 							}
 						?>
