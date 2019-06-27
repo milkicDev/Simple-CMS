@@ -1,7 +1,7 @@
 <?php
 //
 //  user.class.php
-//  zadatak1.threedium
+//  Simple CMS
 //
 //  Created by MR. Programer on 21.6.19..
 //  Copyright © 2019. milkic.dev. All rights reserved.
@@ -25,7 +25,7 @@
 
 				if ($isValid === true) {
 					$_SESSION['user'] = $this->ID;
-					header('LOCATION: index.php');
+					header('LOCATION: home');
 				} else {
 					$this->error_message = "Your Username OR Password not correctly. Please try again!";
 				}
@@ -40,7 +40,7 @@
 		}
 
 		private function ValidationUserData($username, $password) {
-			$query = "SELECT ID, username, password FROM users WHERE username = '$username'";
+			$query = sprintf("SELECT ID, username, password FROM users WHERE username = '%s'", $username);
 			$result = connection::Select($query);
 			$userData = $result->fetch_assoc();
 
@@ -55,7 +55,7 @@
 			return $isValid;
 		}
 
-		private function CryptData($string, $type = "username") {
+		public function CryptData($string, $type = "username") {
 			switch ($type) {
 				case 'username':
 					$value = trim($string);
@@ -71,14 +71,35 @@
 			return $value;
 		}
 
-		public function getUserData() {
-			$query = sprintf("SELECT * FROM users WHERE ID = '%s'", $_SESSION['user']);
+		public function getUserData($userID = null) {
+			if ($userID === null) {
+				$query = sprintf("SELECT * FROM users WHERE ID = '%s'", $_SESSION['user']);
+			} else {
+				$query = sprintf("SELECT * FROM users WHERE ID = '%s'", $userID);
+			}
+			
 			$result = connection::Select($query);
 			$row = $result->fetch_assoc();
 
 			foreach ($row as $key => $value) {
 				$this->getData[$key] = $value;
 			}
+		}
+
+		public function getUsersData() {
+			$query = "SELECT * FROM users";
+			$result = connection::Select($query);
+
+			return $result;
+		}
+
+		public function editUserData($userID) {
+			$query = sprintf("UPDATE users SET firstname = '%s', lastname = '%s', email = '%s', role = '%s' WHERE ID = '%s'", $_POST['firstname'], $_POST['lastname'], $_POST['email'], $_POST['role'], $userID);
+			connection::Select($query);
+
+			$this->error_message = "Your Profile has been updated!";
+
+			header('LOCATION: '. URL .'/profile');
 		}
 
 		public function error_message() {

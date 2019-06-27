@@ -9,8 +9,10 @@
 
 	require_once 'config.php';
 
+	$page = "Login Page";
+
 	if (ISSET($_SESSION['user'])) {
-		header('LOCATION: index.php');
+		header('LOCATION: home');
 	}
 
 	if (ISSET($_POST['submit'])) {
@@ -45,7 +47,7 @@
 				<div class="card card-signin my-5">
 					<div class="card-body">
 						<h5 class="card-title text-center">Sign In</h5>
-						<form action="login.php" method="POST" class="form-signin">
+						<form action="login" method="POST" class="form-signin">
 							<div class="form-label-group pb-3">
 								<label for="inputUsername">Username</label>
 								<input type="text" id="inputUsername" name="username" class="form-control" placeholder="Username" required autofocus>

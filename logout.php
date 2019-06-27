@@ -9,11 +9,7 @@
 
 	require_once 'config.php';
 
-	if (!ISSET($_SESSION['user'])) {
-		header('LOCATION: login.php');
-	}
-
 	$User_Class->User_Logout();
 
-	header('LOCATION: login.php');
+	header('LOCATION: login');
 ?>

@@ -9,10 +9,14 @@
 
 	session_start();
 
-	define(db_host, 'localhost');
-	define(db_user, 'root');
-	define(db_pass, 'root');
-	define(db_name, 'threedium');
+	define('db_host', 'localhost');
+	define('db_user', 'root');
+	define('db_pass', 'root');
+	define('db_name', 'threedium');
+
+	define('URL', 'http://im.developer/simple-cms');
+
+	define('TITLE', 'Simple CMS');
 
 	require_once 'includes/user.class.php';
 	$User_Class = new \site\userClass\user();

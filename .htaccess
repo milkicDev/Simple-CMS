@@ -1,0 +1,13 @@
+Options +FollowSymLinks
+RewriteEngine ON
+
+RewriteBase /simple-cms/
+
+RewriteRule ^/$ http://im.developer/simple-cms/
+
+RewriteRule ^home$ index.php [NC,L]
+RewriteRule ^([a-zA-Z0-9-z\-]+)$ $1.php [NC,L]
+RewriteRule ^articles/([a-zA-Z0-9-z\-]+)/([a-zA-Z0-9-z\-]+)$ articles.php?action=$1&tb=articles&id=$2 [NC,L]
+RewriteRule ^([a-zA-Z0-9-z\-]+)/([a-zA-Z0-9-z\-]+)$ $1.php?action=$2 [NC,L]
+RewriteRule ^([a-zA-Z0-9-z\-]+)/([a-zA-Z0-9-z\-]+)/([a-zA-Z0-9-z\-]+)$ $1.php?action=$2&tb=$3 [NC,L]
+RewriteRule ^([a-zA-Z0-9-z\-]+)/([a-zA-Z0-9-z\-]+)/([a-zA-Z0-9-z\-]+)/([0-9]+)$ $1.php?action=$2&tb=$3&id=$4 [NC,L]

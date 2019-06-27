@@ -1,7 +1,7 @@
 <?php
 //
 //  db.class.php
-//  zadatak1.threedium
+//  Simple CMS
 //
 //  Created by MR. Programer on 21.6.19..
 //  Copyright © 2019. milkic.dev. All rights reserved.
@@ -12,6 +12,15 @@
 	class connection {
 		private static $conn, $db_name;
 
+		public static function Insert($query, $database = db_name) {
+			self::$db_name = $database;
+			self::OpenConnection();
+
+			self::$conn->query($query);
+
+			self::CloseConnection();
+		}
+
 		public static function Select($query, $database = db_name) {
 			self::$db_name = $database;
 			self::OpenConnection();
@@ -21,6 +30,24 @@
 			self::CloseConnection();
 
 			return $result;
+		}
+
+		public static function Update($query, $database = db_name) {
+			self::$db_name = $database;
+			self::OpenConnection();
+
+			self::$conn->query($query);
+
+			self::CloseConnection();
+		}
+
+		public static function Remove($query, $database = db_name) {
+			self::$db_name = $database;
+			self::OpenConnection();
+
+			self::$conn->query($query);
+
+			self::CloseConnection();
 		}
 
 		public static function OpenConnection() {
