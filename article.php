@@ -43,6 +43,15 @@
 				</div>
 				<div class="card-body">
 					<p><?php echo $Artices_data->{$_GET['id']}->body; ?></p>
+
+					<small class="float-right">
+						<?php
+							$author = $Artices_data->{$key}->author;
+							$User_Class->getUserData($author);
+
+							echo '<strong>Author:</strong> <em>'. $User_Class->getData['username'] .'</em>';
+						?>
+					</small>
 				</div>
 			</div>
 		</div>

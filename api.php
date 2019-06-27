@@ -27,7 +27,7 @@
 			case 'read':
 				$func = $apiClass->read();
 				if ($func === null) {
-					$func = array("error_message" => "Table is empty");
+					$func = array("error_message" => "The table of articles is empty!");
 				}
 				break;
 			

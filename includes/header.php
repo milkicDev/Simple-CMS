@@ -1,5 +1,5 @@
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark mb-4">
-	<a class="navbar-brand" href="/home">Simple CMS</a>
+	<a class="navbar-brand" href="<?php echo URL; ?>/home">Simple CMS</a>
 	<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
 		<span class="navbar-toggler-icon"></span>
 	</button>
@@ -51,7 +51,7 @@
 				<div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
 					<a class="dropdown-item" href="<?php echo URL; ?>/profile">Profile</a>
 					<div class="dropdown-divider"></div>
-					<a class="dropdown-item" href="logout">Logout</a>
+					<a class="dropdown-item" href="<?php echo URL; ?>/logout">Logout</a>
 				</div>
 			</li>
 		</ul>

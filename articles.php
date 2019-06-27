@@ -62,22 +62,25 @@
 											<td colspan="5">'. $Artices_data->error_message .'</td>
 										</tr>';
 								} else {
+									$author = $Artices_data->{$key}->author;
+									$User_Class->getUserData($author); 
+
 									echo '
-										<tr>
-											<td scope="row">
-												<a href="'. URL .'/article/'. $Artices_data->{$key}->ID .'">'. $Artices_data->{$key}->ID .'</a>
-											</td>
-											<td>
-												<a href="'. URL .'/article/'. $Artices_data->{$key}->ID .'">'. $Artices_data->{$key}->title .'</a>
-											</td>
-											<td>
-												<a href="'. URL .'/article/'. $Artices_data->{$key}->ID .'">'. $Artices_data->{$key}->author .'</a>
-											</td>
-											<td>
-												<a class="btn btn-primary" href="'. URL .'/articles/update/'. $Artices_data->{$key}->ID .'">UPDATE</a> 
-												<a class="btn btn-danger" href="" onclick="remove('. $Artices_data->{$key}->ID .')">REMOVE</a>
-											</td>
-										</tr>';
+									<tr>
+										<td scope="row">
+											<a href="'. URL .'/article/'. $Artices_data->{$key}->ID .'">'. $Artices_data->{$key}->ID .'</a>
+										</td>
+										<td>
+											<a href="'. URL .'/article/'. $Artices_data->{$key}->ID .'">'. $Artices_data->{$key}->title .'</a>
+										</td>
+										<td>
+											<a href="'. URL .'/article/'. $Artices_data->{$key}->ID .'">'. $User_Class->getData['username'] .'</a>
+										</td>
+										<td>
+											<a class="btn btn-primary" href="'. URL .'/articles/update/'. $Artices_data->{$key}->ID .'">UPDATE</a> 
+											<a class="btn btn-danger" href="" onclick="remove('. $Artices_data->{$key}->ID .')">REMOVE</a>
+										</td>
+									</tr>';
 								}
 							}
 						?>
@@ -86,7 +89,9 @@
 				</div>
 			</div>
 		</div>
-		
+
+		<?php $User_Class->getUserData($_SESSION['user']); ?>
+
 		<div class="row" style="<?php echo (ISSET($_GET['id']) && $_GET['action'] === 'update' || $_GET['action'] === 'insert') ? "display: block" : "display: none"; ?>">
 				<div class="col-sm-9 col-md-7 col-lg-5 mx-auto">
 					<div class="card card-signin my-5">
@@ -95,7 +100,16 @@
 
 							<?php $ID = (ISSET($_GET['id'])) ? '/'. $_GET['id'] : ''; ?>
 							<form action="<?php echo URL .'/api/'. $_GET["action"] .'/articles'. $ID; ?>" method="POST" class="form-group">
-								<input type="hidden" name="author" value="<?php echo $User_Class->getData['ID']; ?>">
+
+								<?php 
+									if (ISSET($_GET['id']) && $_GET['action'] === 'update') {
+										$author = $Artices_data->{$key}->author;
+									} else {
+										$author = $User_Class->getData['ID'];
+									}
+								?>
+
+								<input type="hidden" name="author" value="<?php echo $author; ?>">
 
 								<div class="form-label-group pb-3">
 									<label for="inputTitle">Title</label>

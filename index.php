@@ -73,51 +73,39 @@
 
 					
 		
-			<div class="card mb-3 text-center">
-				<div class="card-header">
-					<h5>ARTICLES TABLE <sup><a href="">ADD NEW</a></sup><h5>
-					<p id="message"></p>
-				</div>
-				<div class="card-body">
-					<table class="table">
-						<tr>
-							<td scope="col">ID</td>
-							<td scope="col">Title</td>
-							<td scope="col">Author</td>
-							<td scope="col">Action</td>
-						</tr>
+			<?php
+				foreach ($Artices_data as $key => $value) {
+					echo '<div class="card mb-3 text-center">';
 
-						<?php
-							foreach ($Artices_data as $key => $value) {
-								if (ISSET($Artices_data->error_message)) {
-									echo '
-										<tr class="text-center">
-											<td colspan="5">'. $Artices_data->error_message .'</td>
-										</tr>';
-								} else {
-									echo '
-									<tr>
-										<td scope="row">
-											<a href="'. URL .'/article/'. $Artices_data->{$key}->ID .'">'. $Artices_data->{$key}->ID .'</a>
-										</td>
-										<td>
-											<a href="'. URL .'/article/'. $Artices_data->{$key}->ID .'">'. $Artices_data->{$key}->title .'</a>
-										</td>
-										<td>
-											<a href="'. URL .'/article/'. $Artices_data->{$key}->ID .'">'. $Artices_data->{$key}->author .'</a>
-										</td>
-										<td>
-											<a class="btn btn-primary" href="'. URL .'/articles/update/'. $Artices_data->{$key}->ID .'">UPDATE</a> 
-											<a class="btn btn-danger" href="" onclick="remove('. $Artices_data->{$key}->ID .')">REMOVE</a>
-										</td>
-									</tr>';
-								}
-							}
-						?>
+					if (ISSET($Artices_data->error_message)) {
+						echo '
+							<div class="card-body">
+								<p>'. $Artices_data->error_message .'</p>
+								<a class="btn btn-primary" href="'. URL .'/articles/insert">ADD NEW</a>
+							</div>';
+					} else {
+						$author = $Artices_data->{$key}->author;
+						$User_Class->getUserData($author);
 
-					</table>
-				</div>
-			</div>
+						echo '
+							<div class="card-header">
+								<h5>
+									'. $Artices_data->{$key}->title .'
+									<a class="btn btn-primary" href="'. URL .'/articles/update/'. $key .'">UPDATE</a>
+								<h5>
+							</div>
+							<div class="card-body">
+								<p>'. $Artices_data->{$key}->body .'</p>
+
+								<small class="float-right">
+										<strong>Author:</strong> <em>'. $User_Class->getData['username'] .'</em>
+								</small>
+							</div>';
+					}
+
+					echo '</div>';
+				}
+			?>
 		</div>
 		
 	</body>
