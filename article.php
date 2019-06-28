@@ -39,7 +39,7 @@
 					<h5>
 						<?php echo $Artices_data->{$_GET['id']}->title; ?>
 						 <a class="btn btn-primary" href="<?php echo URL .'/articles/update/'. $_GET['id']; ?>">UPDATE</a>
-					<h5>
+					</h5>
 				</div>
 				<div class="card-body">
 					<p><?php echo $Artices_data->{$_GET['id']}->body; ?></p>

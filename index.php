@@ -15,11 +15,7 @@
 		header('LOCATION: login');
 	}
 
-	if ($User_Class->getData['role'] >= 2) {
 		$apiURL = URL .'/api/read/articles';
-	} else {
-		$apiURL = URL .'/api.php?action=read&tb=articles&user='. $User_Class->getData['ID'];
-	}
 	
 	$Artices_data = json_decode(file_get_contents($apiURL));
 ?>
@@ -91,8 +87,7 @@
 							<div class="card-header">
 								<h5>
 									'. $Artices_data->{$key}->title .'
-									<a class="btn btn-primary" href="'. URL .'/articles/update/'. $key .'">UPDATE</a>
-								<h5>
+								</h5>
 							</div>
 							<div class="card-body">
 								<p>'. $Artices_data->{$key}->body .'</p>

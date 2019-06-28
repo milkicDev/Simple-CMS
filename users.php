@@ -36,7 +36,7 @@
 					echo '
 						<div class="card mb-3 text-center">
 							<div class="card-header">
-								<h5>USERS TABLE <sup><a href="">ADD NEW</a></sup><h5>
+								<h5>USERS TABLE <sup><a href="">ADD NEW</a></sup></h5>
 							</div>
 							<div class="card-body">
 								<table class="table">

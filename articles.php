@@ -42,7 +42,7 @@
 		<div class="container">
 			<div class="card mb-3 text-center">
 				<div class="card-header">
-					<h5>ARTICLES TABLE <sup><a href="<?php echo URL; ?>/articles/insert">ADD NEW</a></sup><h5>
+					<h5>ARTICLES TABLE <sup><a href="<?php echo URL; ?>/articles/insert">ADD NEW</a></sup></h5>
 					<p id="message"></p>
 				</div>
 				<div class="card-body">
