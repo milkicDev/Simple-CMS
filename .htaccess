@@ -1,10 +1,6 @@
 Options +FollowSymLinks
 RewriteEngine ON
 
-RewriteBase /simple-cms/
-
-RewriteRule ^/$ http://im.developer/simple-cms/
-
 RewriteRule ^home$ index.php [NC,L]
 RewriteRule ^([a-zA-Z0-9-z\-]+)$ $1.php [NC,L]
 RewriteRule ^article/([a-zA-Z0-9-z\-]+)$ article.php?id=$1 [NC,L]
