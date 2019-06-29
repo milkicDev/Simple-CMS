@@ -15,7 +15,7 @@
 		header('LOCATION: login');
 	}
 
-		$apiURL = URL .'/api/read/articles';
+	$apiURL = URL .'/api/read/articles';
 	
 	$Artices_data = json_decode(file_get_contents($apiURL));
 ?>
